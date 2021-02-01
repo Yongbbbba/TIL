@@ -10,13 +10,14 @@
 ## 디렉토리 구조
 
 ```sh
-└─TIL
+└─TIL/
    │
-   ├─git // git 공부 내용
+   ├─git/ 		// git 공부 내용
    │
-   ├─cpp // c++ 공부 내용 
-   │  └─ cppConquer // 모두의코드 블로그의 '씹어먹는 C++' 공부 코드
-   │          └─ dataCal // 날짜 계산기 실습
+   ├─cpp/ 		// c++ 공부 내용 
+   │  └─ cppConquer/ 		// 모두의코드 블로그의 '씹어먹는 C++' 공부 코드
+   │          ├─ dataCal/ 		// 날짜 계산기 실습
+   │          └─ stringClass/     // stirng 클래스 만들어보기 실습
    └─.gitignore 
 ```
 
