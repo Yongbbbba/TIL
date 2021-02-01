@@ -17,7 +17,7 @@ class Marine
     Marine(int x, int y, int default_damage); 
     Marine(int x, int y); // 좌표에 마린 생성
 
-    int attack(); // 데미지를 리턴한다
+    int attack() const; // 데미지를 리턴한다
     Marine& be_attacked(int damage_earn); // 입는 데미지
     void move(int x, int y); // 새로운 위치
     void show_status(); // 상태를 보여준다.
@@ -31,35 +31,35 @@ void Marine::show_total_marine() { // static 함수
         << std::endl;
 }
 Marine::Marine()
-    : hp(50), coord_x(0), coord_y(0), default_damage(5), is_dead(false) {
-        total_marine_num++;
-    }
-
-Marine::Marine(int x, int y)
-    : coord_x(x),
-    coord_y(y),
-    hp(50),
-
-    default_damage(5),
-    is_dead(false) {
+    : hp(50), coord_x(0), coord_y(0),is_dead(false),  default_damage(5) {
         total_marine_num++;
     }
 Marine::Marine(int x, int y, int default_damage)
-    : coord_x(x),
+    : hp(50),
+    coord_x(x),
+    coord_y(y),    
+    is_dead(false), 
+    default_damage(default_damage)
+{
+    total_marine_num++;
+}
+
+
+Marine::Marine(int x, int y)
+    :     hp(50),
+    coord_x(x),
     coord_y(y),
-    hp(50),
-
-    default_damage(default_damage),
-    is_dead(false) {
-        total_marine_num++;
-    }
-
+    is_dead(false),
+    default_damage(5)
+{
+    total_marine_num++;
+}
 
 void Marine::move(int x, int y) {
     coord_x = x;
     coord_y = y;
 }
-int Marine::attack() { return default_damage;}
+int Marine::attack()const { return default_damage;}
 
 Marine& Marine::be_attacked(int damage_earn) {
     hp -= damage_earn;
