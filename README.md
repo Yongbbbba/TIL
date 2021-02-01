@@ -29,7 +29,14 @@
 
 
 
-### 생각해보기 실습 목록
+### 생각해보기 실습
 
+#### 개발환경
+
+- Ubuntu-20.04 (WSL2)
+- g++ -std=c++17
+- vim    
+
+#### 실습 목록
 - [날짜 계산기 만들기](https://yongbbbba.github.io/til/dateCalulator/) 
 

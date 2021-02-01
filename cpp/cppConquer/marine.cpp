@@ -60,6 +60,7 @@ void Marine::move(int x, int y) {
     coord_y = y;
 }
 int Marine::attack() { return default_damage;}
+
 Marine& Marine::be_attacked(int damage_earn) {
     hp -= damage_earn;
     if (hp<=0) is_dead = true;
