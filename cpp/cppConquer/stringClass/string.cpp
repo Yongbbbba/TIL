@@ -24,6 +24,9 @@ class MyString {
     int length() const;
     void print() const;
     void println() const;
+    
+    MyString & assign(const MyString& str);
+    MyString & assign(const char * str);
 };
 
 MyString::MyString(char c) {
@@ -60,6 +63,31 @@ void MyString::println() const{
         std::cout << string_content[i];
     }
     std::cout << std::endl;
+}
+
+MyString& MyString::assign(const MyString& str) {
+    if (str.string_length > string_length) {
+        // 다시 할당해줘야 한다. 
+        delete[] string_content;
+        string_content = new char[str.string_length];
+    }
+    for (int i=0; i != str.string_length; i++) { 
+    string_content[i] = str.string_content[i];
+    }
+    return *this;
+    }
+MyString& MyString::assign(const char* str) {
+    int str_length = strlen(str);
+    if (str_length > string_length) {
+        delete[] string_content;
+
+        string_content = new char[str_length];
+    }
+    for (int i=0; i!=str_length; i++) {
+        string_content[i] = str[i];
+    }
+   string_length = str_length;
+return *this;
 }
 
 int main() {
