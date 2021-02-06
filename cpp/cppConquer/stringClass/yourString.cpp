@@ -50,6 +50,7 @@ MyString::MyString(const char* str) {
 MyString::MyString(const MyString& str) {
     string_length = str.string_length;
     memory_capacity = str.string_length; 
+    string_content = new char[string_length];
     for (int i=0; i != string_length; i++) 
         string_content[i] = str.string_content[i];
 }
