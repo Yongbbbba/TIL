@@ -32,6 +32,7 @@ class MyString{
     MyString& insert(int loc, char c);
     MyString& insert(int loc, const char* str);
     // 특정 위치의 특정 개수의 문자를 지우는 함수(erase)
+    MyString& erase(int loc, int num);
     // 특정 위치를 시작으로 특정 문자열을 검색하는 함수(find)
     // 두 문자열을 사전식 비교하는 함수(compare)
 };
@@ -192,16 +193,29 @@ MyString& MyString::insert(int loc, const char* str) {
     return insert(loc, temp);
 }
 
+MyString& MyString::erase(int loc, int num) {
+    // 지우려는 문자의 갯수가 out of range일 경우
+    if ((string_length-loc) < num) return *this;
+    if (loc < 0 || num < 0 || loc > string_length) return *this; 
+    
+    for (int i = loc+num; i < string_length; i++) {
+        string_content[i-num] = string_content[i];
+    }
+    string_length -= num;
+    return *this;
+}
+
 int main() {
-    MyString str1("very long string");
-    MyString str2("<some string iserted between>");
-    str1.reserve(30);
-
-    std::cout << "Capacity : " << str1.capacity() << std:: endl;
-    std:: cout << "String length : " << str1.length() << std::endl;
-
+    MyString str1("abcdef");
+    std::cout << "string content : " ; 
     str1.println();
-    str1.insert(5,str2);
+    std::cout << "capacity : "  << str1.capacity() << std::endl;
+    std::cout << "length : " << str1.length() << std::endl;
+    str1.erase(2,6);
+    std::cout << "string content : "; 
     str1.println();
-    return 0;
+    std::cout << "capacity : "  << str1.capacity() << std::endl;
+    std::cout << "length : " << str1.length() << std::endl;
+        return 0;
+
 }
