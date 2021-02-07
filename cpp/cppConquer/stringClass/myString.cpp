@@ -34,6 +34,9 @@ class MyString{
     // 특정 위치의 특정 개수의 문자를 지우는 함수(erase)
     MyString& erase(int loc, int num);
     // 특정 위치를 시작으로 특정 문자열을 검색하는 함수(find)
+    int find(int find_from, const MyString& str) const;
+    int find(int find_from, const char* str) const;
+    int find(int find_from, char c) const;
     // 두 문자열을 사전식 비교하는 함수(compare)
 };
 
@@ -149,7 +152,7 @@ MyString& MyString::insert(int loc, const MyString& str) {
         if (memory_capacity * 2 > str.string_length + string_length) {
             memory_capacity *= 2;
         } else {
-        memory_capacity = string_length + str.string_length;
+            memory_capacity = string_length + str.string_length;
         }
         char* prev_string_content = string_content;
         string_content = new char[memory_capacity];
@@ -197,25 +200,40 @@ MyString& MyString::erase(int loc, int num) {
     // 지우려는 문자의 갯수가 out of range일 경우
     if ((string_length-loc) < num) return *this;
     if (loc < 0 || num < 0 || loc > string_length) return *this; 
-    
+
     for (int i = loc+num; i < string_length; i++) {
         string_content[i-num] = string_content[i];
     }
     string_length -= num;
     return *this;
 }
+int MyString::find(int find_from, const MyString& str) const {
+    int i,j;
+    if (str.string_length == 0) return -1;
+    for (i=find_from; i<= string_length - str.string_length; i++) {
+        for (j=0; j < str.string_length; j++) {
+            if (string_content[i+j] != str.string_content[j]) break;
+        }
+        if (j== str.string_length) return i;
+    }
+
+    return -1; // 찾지 못함
+}
+int MyString::find(int find_from, char c) const {
+    MyString temp(c);
+    return find(find_from, temp);
+}
+int MyString::find(int find_from, const char* str) const {
+    MyString temp(str);
+    return find(find_from, temp);
+}
 
 int main() {
-    MyString str1("abcdef");
-    std::cout << "string content : " ; 
-    str1.println();
-    std::cout << "capacity : "  << str1.capacity() << std::endl;
-    std::cout << "length : " << str1.length() << std::endl;
-    str1.erase(2,6);
-    std::cout << "string content : "; 
-    str1.println();
-    std::cout << "capacity : "  << str1.capacity() << std::endl;
-    std::cout << "length : " << str1.length() << std::endl;
-        return 0;
+    MyString str1("this is a very very long string");
+    std::cout << "Location of first <very> in the string : " 
+        << str1.find(0,"very") << std::endl;
+    std::cout << "Location of second <very> in the string : " 
+        << str1.find(str1.find(0, "very")+1, "very") << std::endl;
 
+    return 0;
 }
