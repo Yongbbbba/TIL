@@ -38,6 +38,7 @@ class MyString{
     int find(int find_from, const char* str) const;
     int find(int find_from, char c) const;
     // 두 문자열을 사전식 비교하는 함수(compare)
+    int compare(const MyString& str) const;
 };
 
 // 생성자
@@ -207,13 +208,16 @@ MyString& MyString::erase(int loc, int num) {
     string_length -= num;
     return *this;
 }
+// 문자열 위치 찾기
 int MyString::find(int find_from, const MyString& str) const {
     int i,j;
     if (str.string_length == 0) return -1;
     for (i=find_from; i<= string_length - str.string_length; i++) {
         for (j=0; j < str.string_length; j++) {
+            // 일치하지 않는 char 발견시 roop break;
             if (string_content[i+j] != str.string_content[j]) break;
         }
+        // j == str.string_length이라는 뜻은 반복문을 break없이 돌고 나왔다는 뜻 
         if (j== str.string_length) return i;
     }
 
@@ -227,13 +231,29 @@ int MyString::find(int find_from, const char* str) const {
     MyString temp(str);
     return find(find_from, temp);
 }
+// 문자열 비교 함수
+int MyString::compare(const MyString& str) const {
+    // 1, 0 , -1을 리턴
+    // 1은 (*this)가 사전식으로 더 뒤에 온다는 의미
+    // 0은 두 문자열이 같다는 의미
+    // -1은 (*this)가 사전식으로 더 앞에 온다는 의미
+    for (int i=0; i < std::min(string_length, str.string_length); i++) {
+        if (string_content[i] > str.string_content[i]) 
+            return 1;
+        else if (string_content[i] < str.string_content[i]) 
+            return -1;
+    }
+    // 여기까지 했는데 리턴이 되지 않았다면 앞 부분까지 모두 똑같다는 뜻이다. 만일 문자열의 길이가 같다면 두 문자열은 아예 같은 문자열이다.
+    if (string_length == str.string_length) return 0;
+    else if (string_length > str.string_length) return 1;
+
+    return -1;
+}
 
 int main() {
-    MyString str1("this is a very very long string");
-    std::cout << "Location of first <very> in the string : " 
-        << str1.find(0,"very") << std::endl;
-    std::cout << "Location of second <very> in the string : " 
-        << str1.find(str1.find(0, "very")+1, "very") << std::endl;
+    MyString str1("abcdef");
+    MyString str2("abcde");
 
+    std::cout << "str1 and str2 compare : " << str1.compare(str2) << std::endl;
     return 0;
 }
