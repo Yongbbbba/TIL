@@ -18,6 +18,12 @@
    │  └─ cppConquer/ 		// 모두의코드 블로그의 '씹어먹는 C++' 공부 코드
    │          ├─ dataCal/ 		// 날짜 계산기 실습
    │          └─ stringClass/     // stirng 클래스 만들어보기 실습
+   │
+   ├─algorithm/            // 알고리즘 풀이 코드 및 고민과 사투, 특이사항 정리
+   │        ├─ boj // 백준 문제
+   │        ├─ swea // sw expert academy 문제
+   │        └─ leetcode // leetcode 문제
+   │
    └─.gitignore 
 ```
 
@@ -41,6 +47,12 @@
 #### 실습 목록
 - [날짜 계산기 만들기](https://yongbbbba.github.io/til/dateCalulator/) 
 - [string 클래스 구현(~ing)](cpp/cppConquer/stringClass/string.md)
+  - find의 경우 문자열 알고리즘을 적용해서 다시 구현해볼 예정입니다.
+  - compare는 아직 쓰임새 자체를 몰라서 수업 코드만 클론해봤습니다. 나중에 다시 구현해볼 예정입니다.
 
 
 
+## 알고리즘 문제 풀이 정리(2021-02 ~ ing )
+
+- 백준, 삼성소프트웨어아카데미, leetcode 등에서 문제를 풀고 코드를 정리, 문제를 푸는 과정과 고민했던 부분, 특이사항, 배운 부분을 정리 중입니다.
+- 주 사용 언어 : C++, Python
