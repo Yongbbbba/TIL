@@ -123,12 +123,12 @@ char MyString::at(int i) const {
         return string_content[i];
 }
 
-int main() {
-    MyString str1("very very very long string");
-    str1.reserve(30);
-
-    std::cout << "Capacity : " << str1.capacity() << std::endl;
-    std::cout << "String lenth : " << str1.length() << std::endl;
-    str1.println();
-    return 0;
-}
+//int main() {
+//    MyString str1("very very very long string");
+//    str1.reserve(30);
+//
+//    std::cout << "Capacity : " << str1.capacity() << std::endl;
+//    std::cout << "String lenth : " << str1.length() << std::endl;
+//    str1.println();
+//    return 0;
+//}
