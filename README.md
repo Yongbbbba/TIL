@@ -40,9 +40,11 @@
 
 #### 개발환경
 
-- Ubuntu-20.04 (WSL2)
-- g++ -std=c++17
-- vim    
+- ~~Ubuntu-20.04 (WSL2)~~
+- ~~g++ -std=c++17~~
+- ~~vim~~    
+- Windows 10
+- Visual Studio 2019
 
 #### 실습 목록
 - [날짜 계산기 만들기](https://yongbbbba.github.io/til/dateCalulator/) 
