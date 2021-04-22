@@ -868,3 +868,5 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,c++
 
+# 용량커서 제낌
+UnrealProjects/
