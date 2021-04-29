@@ -1,2 +1,0 @@
-# Deterministic 방식
-
