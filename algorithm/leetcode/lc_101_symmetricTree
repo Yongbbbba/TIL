@@ -1,0 +1,35 @@
+# leetcode 101 Symmetric Tree
+
+왼쪽과 오른쪽이 같아야한다.
+
+이걸 재귀로 짜는걸 어려워했는데.. 아직 재귀를 제대로 이해하지 못하고 있는 것 같다. 이해하고 짜는게 아니라 그냥 짜던대로 짜서 그렇게 되는걸 머리로 아는거지 이해하고 짜는게 아니었다 지금까지.
+
+
+
+``` python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    
+    def isSymmetric(self, root: TreeNode) -> bool:
+        def compare(node1, node2):
+            
+            # 둘다 null 이면 True
+            if node1 is None and node2 is None:
+                return True
+            # 둘 중 하나가 null이면 False
+            if node1 is None or node2 is None:
+                return False
+            # 여기까지 왔으면 둘다 null은 아님
+            if node1.val != node2.val:
+                return False
+            
+            return compare(node1.left, node2.right) and compare(node1.right, node2.left)
+            
+        return compare(root.left, root.right)
+```
+
