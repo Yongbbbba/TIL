@@ -88,6 +88,7 @@ int main()
 		for (int i = 0; i < 3; i++)
 			cout << nums[i] << ' ';
 		cout << endl;
+        reverse(nums + 3, nums + 5);
 	} while (next_permutation(nums, nums+5));
 	cout << endl;
 	// 조합 출력 5C3
