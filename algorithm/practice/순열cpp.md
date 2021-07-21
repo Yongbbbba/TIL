@@ -60,3 +60,49 @@ int main()
 }
 ```
 
+
+
+## next_permutation으로 순열과 조합 구하기
+
+```c++
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <cctype>
+#include <stack>
+#include <queue>
+
+using namespace std;
+
+
+
+int main()
+{
+	int a[5] = { 0,0,0,1,1 };
+	int nums[5] = { 1,2,3,4,5 };
+	// 순열 출력 5P3
+	cout << "순열 출력" << endl;
+	do
+	{
+		for (int i = 0; i < 3; i++)
+			cout << nums[i] << ' ';
+		cout << endl;
+	} while (next_permutation(nums, nums+5));
+	cout << endl;
+	// 조합 출력 5C3
+	cout << "조합 출력" << endl;
+	do
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			if (a[i] == 0)
+				cout << i + 1 << ' ';
+		}
+		cout << endl;
+	} while (next_permutation(a, a+5));
+
+}
+ 
+```
+
