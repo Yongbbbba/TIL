@@ -2,56 +2,69 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
-	// chapter 11
-	// 문제 1
-	int size;
-	printf("몇 명의 학생 성적을 입력할 것인가요? : ");
-	scanf("%d", &size);
-	printf("\n");
-	int* scores = (int*)malloc(sizeof(int) * size);
-	for (int i = 1; i <= size; i++)
-	{
-		int score;
-		printf("%d번째 학생의 성적을 입력하세요 : ", i);
-		scanf("%d", &score);
-		printf("\n");
-		scores[i - 1] = score;
-	}
-	printf("입력 종료\n");
+// chapter 13-3
+// 생각해보기
 
-	// 정렬
-	for (int i = 0; i < size; i++)
+// 배열 swap
+void arr_swap(int *a, int *b)
+{
+	int temp[4];
+	for (int i = 0; i < 4; i++)
 	{
-		for (int j = i; j < size; j++)
+		temp[i] = *(a + i);
+		*(a + i) = *(b + i);
+		*(b + i) = temp[i];
+	}
+}
+
+int main() {
+	// 문제1
+	int scores[5][4];
+	int total_average = 0;
+	
+	//// 입력받기
+	for (int i = 0; i < 5; i++)
+	{
+		char* subjects[3] = { "수학", "국어", "영어" };
+		int average = 0;
+		for (int j = 0; j < 3; j++)
 		{
-			if (scores[i] > scores[j])
+			printf("%d번 학생의 %s 점수를 입력 하세요 : ", i+1, subjects[j]);
+			int score;
+			scanf("%d", &score);
+			printf("\n");
+			scores[i][j] = score;
+			average += score;
+		}
+		scores[i][3] = average / 3;
+		total_average += scores[i][3];
+	}
+
+	total_average /= 5;
+
+	//// 정렬하기   - 버블
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = i; j < 5; j++)
+		{
+			if (scores[i][3] > scores[j][3])
 			{
-				int temp = scores[i];
-				scores[i] = scores[j];
-				scores[j] = temp;
+				arr_swap(scores[i], scores[j]);
 			}
 		}
 	}
-	// 출력
-	for (int i = 0; i < size; i++)
+
+	//// 출력하기
+	for (int i = 0; i < 5; i++)
 	{
-		printf("%d ", scores[i]);
+		char* result;
+		if (scores[i][3] >= total_average)
+			result = "합격";
+		else
+			result = "불합격";
+
+		printf("%d번 학생의 평균은 %d입니다 -> %s\n", i + 1, scores[i][3], result);
 	}
-	printf("\n");
-
-	// 문제2
-	for (int i = 0; i < size; i++)
-	{
-		printf("%d번 학생       ", i + 1);
-		for (int j = 0; j < scores[i]; j++)
-		{
-			printf("*");
-		}
-		printf("\n");
-	}
-
-	free(scores);
-
+	
 	return 0;
 }
