@@ -17,15 +17,22 @@ void arr_swap(int *a, int *b)
 	}
 }
 
-int main() {
-	// 문제2
-	int a = 136, b = 736;
-	while (a)
+// factorial
+int fact(int num)
+{
+	if (num == 1)
 	{
-		int temp = b % a; 
-		b = a;
-		a = temp;
+		return 1;
 	}
+	
+	int result = num * fact(num - 1);
+
+	return result;
+}
+
+int main() {
+	// 문제3
+	int result = fact(5);
 	
 
 	return 0;
