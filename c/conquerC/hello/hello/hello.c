@@ -43,13 +43,16 @@ int add_book(char* books[])
 	char publisher[30];
 
 	printf("책 제목을 입력해주세요 : ");
-	scanf("%s", &title);
+	scanf("%[^\n]s", title);
+	getchar();
 	printf("\n");
 	printf("책 저자를 입력해주세요 : ");
-	scanf("%s", &author);
+	scanf("%[^\n]s", author);
+	getchar();
 	printf("\n");
 	printf("책 출판사를 입력해주세요 : ");
-	scanf("%s", &publisher);
+	scanf("%[^\n]s", publisher);
+	getchar();
 	printf("\n");
 
 
@@ -90,6 +93,7 @@ int bookmanager()
 	int checkbook[100];
 	char* books[100][3]; // 제목, 저자이름, 출판사
 
+	init(checkbook, possible, sizeof(possible) / sizeof(int));
 
 	while (1)
 	{
@@ -124,7 +128,7 @@ int bookmanager()
 		else if (input == 0)
 		{
 			printf("프로그램을 종료합니다\n");
-			break;
+			return 1;
 		}
 
 		else
@@ -139,8 +143,7 @@ int bookmanager()
 
 int main() {
 	
-
-	bookmanager();
+ bookmanager();
 
 	return 0;
 }
