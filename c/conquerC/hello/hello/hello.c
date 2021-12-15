@@ -17,35 +17,187 @@ char* str_copy(char* str1, char* str2);
 char* str_append(char* str1, char* str2);
 // 문자열을 비교하는 함수
 bool str_compare(char* str1, char* str2);
+// 문자열 역순 출력
+int str_revere_print(char* str);
+// 소문자 -> 대문자, 대문자 -> 소문자 출력
+int str_upper_lower_print(char* str);
+int str_find(char* str1, char* str2);
+
+// 도서 관리 프로그램
+int init(int checkbook[], int possible[], int row)
+{
+	for (int i = 0; i < row; i++)
+	{
+		checkbook[i] = 0;
+		possible[i] = 0;
+	}
+
+	return 1;
+}
+
+// 책 새로 추가하기(책의 총 개수는 100권 - 정보는 제목, 저자 이름, 출판사)
+int add_book(char* books[])
+{
+	char title[30];
+	char author[30];
+	char publisher[30];
+
+	printf("책 제목을 입력해주세요 : ");
+	scanf("%s", &title);
+	printf("\n");
+	printf("책 저자를 입력해주세요 : ");
+	scanf("%s", &author);
+	printf("\n");
+	printf("책 출판사를 입력해주세요 : ");
+	scanf("%s", &publisher);
+	printf("\n");
+
+
+	books[0] = title;
+	books[1] = author;
+	books[2] = publisher;
+
+	return 1;
+}
+
+int find_empty(int checkbook[], int row)
+{
+	for (int i = 0; i < row; i++)
+	{
+		if (checkbook[i] == 0)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+// 책의 제목을 검색 (인자 : 제목, 반환: 인덱스)
+int find_by_title(char* title);
+// 정보를 출력하는 함수(인자: 책 인덱스, 반환 성공/실패)
+int print_book(int idx);
+// 저자, 출판사 검색 기능이 있어야함
+// 책을 빌리는 기능(인자: 책 제목, 반환 : 성공/실패)
+int borrow_book();
+// 책을 반납하는 기능(인자 책 제목, 반환 : 성공/실패)
+
+
+int bookmanager()
+{
+	int cnt = 0;
+	int ptr = 0;
+	int possible[100];  // 0은 소장, 1은 대출상태
+	int checkbook[100];
+	char* books[100][3]; // 제목, 저자이름, 출판사
+
+
+	while (1)
+	{
+		int input;
+		printf("1: 책 새로 추가하기 0: 프로그램 종료\n");
+		printf("원하시는 기능을 입력해주세요 : ");
+		scanf("%d", &input); 
+		int test = getchar();
+		printf("\n");
+
+		if (input == 1)
+		{
+			if (cnt == 100)
+			{
+				printf("더 이상 책을 추가할 수 없습니다.\n");
+				continue;
+			}
+				
+			int result = add_book(books[ptr]);
+			if (result)
+			{
+				cnt++;
+				checkbook[ptr] = 1;
+				ptr = find_empty(checkbook, sizeof(checkbook) / sizeof(int));
+				printf("도서 추가가 성공하였습니다\n");
+			}
+			else
+			{
+				printf("도서 추가가 실패하였습니다\n");
+			}
+		}
+		else if (input == 0)
+		{
+			printf("프로그램을 종료합니다\n");
+			break;
+		}
+
+		else
+		{
+			printf("다시 입력해주세요\n");
+			continue;
+		}
+	}
+}
+
+
 
 int main() {
-	char str[20] = "hello every1";
-	char str2[20] = "hello everyone";
-	char str3[20] = "hello every1 hi";
-	char str4[20] = "hello every1";
+	
 
-	if (str_compare(str, str2)) {
-		printf("%s 와 %s 는 같다 \n", str, str2);
-	}
-	else {
-		printf("%s 와 %s 는 다르다 \n", str, str2);
-	}
-
-	if (str_compare(str, str3)) {
-		printf("%s 와 %s 는 같다 \n", str, str3);
-	}
-	else {
-		printf("%s 와 %s 는 다르다 \n", str, str3);
-	}
-
-	if (str_compare(str, str4)) {
-		printf("%s 와 %s 는 같다 \n", str, str4);
-	}
-	else {
-		printf("%s 와 %s 는 다르다 \n", str, str4);
-	}
+	bookmanager();
 
 	return 0;
+}
+
+int str_find(char* str1, char* str2)
+{
+	int str1_length = str_length(str1);
+	int str2_length = str_length(str2);
+
+	for (int i = 0; i < str1_length; i++)
+	{
+		if (str1[i] == str2[0])
+		{
+			int find = 1;
+			for (int j = 1; j < str2_length; j++)
+			{
+				if (str1[i + j] != str2[j])
+				{
+					find = 0;
+					break;
+				}
+			}
+			if (find)
+				return i;
+		}
+	}
+	return -1;
+}
+
+int str_upper_lower_print(char* str)
+{
+	int ptr = 0;
+	while (str[ptr])
+	{
+		if (str[ptr] < 97) // 대문자
+		{
+			printf("%c", str[ptr] + 32);
+		}
+		else // 소문자
+		{
+			printf("%c", str[ptr] - 32);
+		}
+		ptr++;
+	}
+
+	return 1;
+}
+
+int str_revere_print(char* str)
+{
+	int ptr = str_length(str) - 1;
+	while (ptr != -1)
+	{
+		printf("%c", str[ptr--]);
+	}
+	printf("\n");
+	return 1;
 }
 
 int str_length(char* str)
