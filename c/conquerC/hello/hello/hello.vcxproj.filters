@@ -18,5 +18,19 @@
     <ClCompile Include="hello.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="human.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="str.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="human.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="str.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
