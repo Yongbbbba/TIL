@@ -51,12 +51,16 @@ int main()
     fgets(buf, 100, fp);
 
     char* ptr = buf;
-    bool result = false;
+    
+    fp = fopen("b.txt", "w");
+
     while (*ptr)
     {
-        result = findString(buf, "apple");
+        fputc(*ptr, fp);
         ptr++;
     }
+    *ptr = '\0';
+    
 
     fclose(fp);
     
