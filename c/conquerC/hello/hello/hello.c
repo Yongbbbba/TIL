@@ -4,76 +4,30 @@
 #include <stdbool.h>
 #include "human.h"
 #include "str.h"
-
-struct Node
-{
-	int data;
-	struct Node* nextNode;
-};
-
-struct Node* CreateNode(int data)
-{
-	struct Node* node = (struct Node*)malloc(sizeof(struct Node));
-	node->data = data;
-	node->nextNode = NULL;
-
-	return node;
-}
-
-struct Node* InsertNode(struct Node* currentNode, int data)
-{
-	struct Node* temp = currentNode->nextNode;
-
-	struct Node* node = (struct Node*)malloc(sizeof(struct Node));
-	node->data = data;
-	node->nextNode = temp;
-	currentNode->nextNode = node;
-
-	return node;
-}
-
-void DestroyNode(struct Node* target, struct Node* head)
-{
-	
-	struct Node* cur = head;
-
-	if (cur == target)
-	{
-		free(target);
-		return;
-	}
-
-	while (cur)
-	{
-		if (cur->nextNode == target)
-		{
-			cur->nextNode = target->nextNode;
-		}
-		cur = cur->nextNode;
-	}
-	free(target);
-
-	return;
-}
-
-void PrintNodeFrom(struct Node* from) {
-	/* from 이 NULL 일 때 까지,
-	   즉 끝 부분에 도달할 때 까지 출력 */
-	while (from) {
-		printf("노드의 데이터 : %d \n", from->data);
-		from = from->nextNode;
-	}
-}
+#include <string.h>
+#include <errno.h>
 
 int main()
 {
-	struct Node* Node1 = CreateNode(100);
-	struct Node* Node2 = InsertNode(Node1, 200);
-	struct Node* Node3 = InsertNode(Node2, 300);
-	/* Node 2 뒤에 Node4 넣기 */
-	struct Node* Node4 = InsertNode(Node2, 400);
+	// chapter 23-1
+	// 생각해보기 문제1
+	// 경로 입력받기
+    
+    char filepath[50];
 
-	PrintNodeFrom(Node1);
+    printf("저장할 경로와 파일이름을 입력하세요: ");
+    scanf("%s", filepath);
+
+    FILE* fp = fopen(filepath, "w");
+
+    if (fp == NULL) {
+        printf("출력 오류 발생 : %d\n", errno);
+        return 0;
+    }
+    fputs("test!! \n", fp);
+    printf("파일 생성 완료\n");
+
+    fclose(fp);
+    
 	return 0;
-	
 }
