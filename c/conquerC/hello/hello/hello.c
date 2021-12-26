@@ -7,25 +7,56 @@
 #include <string.h>
 #include <errno.h>
 
+bool findString(char* input, char* target)
+{
+    int input_len = strlen(input);
+    int target_len = strlen(target);
+
+    for (int i = 0; i < input_len; i++)
+    {
+        if (target[0] == input[i])
+        {
+            int result = 1;
+            for (int j = 1; j < target_len; j++)
+            {
+                if (target[j] != input[i + j])
+                {
+                    result = 0;
+                    break;
+                }
+            }
+            if (result)
+                return true;
+        }
+    }
+    return false;
+}
+
 int main()
 {
 	// chapter 23-1
 	// 생각해보기 문제1
 	// 경로 입력받기
     
-    char filepath[50];
+    char* filepath = "a.txt";
 
-    printf("저장할 경로와 파일이름을 입력하세요: ");
-    scanf("%s", filepath);
-
-    FILE* fp = fopen(filepath, "w");
+    FILE* fp = fopen(filepath, "r");
 
     if (fp == NULL) {
-        printf("출력 오류 발생 : %d\n", errno);
+        printf("입력 오류 발생 : %d\n", errno);
         return 0;
     }
-    fputs("test!! \n", fp);
-    printf("파일 생성 완료\n");
+    
+    char buf[100];
+    fgets(buf, 100, fp);
+
+    char* ptr = buf;
+    bool result = false;
+    while (*ptr)
+    {
+        result = findString(buf, "apple");
+        ptr++;
+    }
 
     fclose(fp);
     
