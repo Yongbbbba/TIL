@@ -26,7 +26,7 @@
 
 ### 사용자, 응용 프로그램, 운영체제, 컴퓨터 하드웨어 간의 관계
 
-![image-20220130115937335](../../../AppData/Roaming/Typora/typora-user-images/image-20220130115937335.png)
+![image-20220130115937335](./typora-user-images/image-20220130115937335.png)
 
 
 
@@ -36,7 +36,7 @@
   - 사용자가 운영체제 기능과 서비스를 조작할 수 있도록 인터페이스를 제공하는 프로그램
   - 쉘은 터미널 환경(CLI)와 GUI 환경 두 종류로 분류
 
-![image-20220130120235469](../../../AppData/Roaming/Typora/typora-user-images/image-20220130120235469.png)
+![image-20220130120235469](./typora-user-images/image-20220130120235469.png)
 
 #### 운영체제는 응용 프로그램을 위해서도 인터페이스를 제공
 
@@ -45,7 +45,7 @@
   - open()
 - 보통은 함수의 종류가 너무 많기 때문에 라이브러리(Library) 형태로 제공
 
-![image-20220130120839802](../../../AppData/Roaming/Typora/typora-user-images/image-20220130120839802.png)
+![image-20220130120839802](./typora-user-images/image-20220130120839802.png)
 
 
 

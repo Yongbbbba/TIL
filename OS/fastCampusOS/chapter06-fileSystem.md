@@ -45,7 +45,7 @@
 
 - 동일한 시스템콜을 사용해서 다양한 파일 시스템 지원 가능하도록 구현
 
-  ![image-20220126005430316](../../../AppData/Roaming/Typora/typora-user-images/image-20220126005430316.png)
+  ![image-20220126005430316](./typora-user-images/image-20220126005430316.png)
 
   - FAT를 쓰건 NTFS를 쓰건 open이라는 함수는 변하지 않고 동일한 기능을 수행
     - 만약 파일 시스템에 따라 함수의 이름이나 내부 동작이 바뀌면 사용이 골치아파지고 비효율적일 것
@@ -55,7 +55,7 @@
   - 파일을 실제 어떻게 저장할지는 다를 수 있음
     - 리눅스의 경우 ext4 외 NTFS, FAT32 파일 시스템 지원
 
-![image-20220126005323107](../../../AppData/Roaming/Typora/typora-user-images/image-20220126005323107.png)
+![image-20220126005323107](./typora-user-images/image-20220126005323107.png)
 
 
 
@@ -77,15 +77,15 @@
   - 파일 시스템에서는 inode를 기반으로 파일 엑세스
   - inode 기반 메타 데이터 저장
 
-![image-20220126225226445](../../../AppData/Roaming/Typora/typora-user-images/image-20220126225226445.png)
+![image-20220126225226445](./typora-user-images/image-20220126225226445.png)
 
-![image-20220126225418909](../../../AppData/Roaming/Typora/typora-user-images/image-20220126225418909.png)
+![image-20220126225418909](./typora-user-images/image-20220126225418909.png)
 
-![image-20220126225813558](../../../AppData/Roaming/Typora/typora-user-images/image-20220126225813558.png)
+![image-20220126225813558](./typora-user-images/image-20220126225813558.png)
 
-![image-20220126230107651](../../../AppData/Roaming/Typora/typora-user-images/image-20220126230107651.png)
+![image-20220126230107651](./typora-user-images/image-20220126230107651.png)
 
-![image-20220126230224932](../../../AppData/Roaming/Typora/typora-user-images/image-20220126230224932.png)
+![image-20220126230224932](./typora-user-images/image-20220126230224932.png)
 
 
 

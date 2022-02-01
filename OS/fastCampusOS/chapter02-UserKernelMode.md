@@ -7,7 +7,7 @@
     - OS만 사용할 수 있는 특권 명령을 사용자 모드에서 사용하려고 하면 수행이 제한됨
   - 커널 모드(kernel mode): 특권 명령어 실행과 원하는 작업 수행을 위한 자원 접근을 가능케 하는 모드, OS가 사용
 
-![image-20220130202514188](../../../AppData/Roaming/Typora/typora-user-images/image-20220130202514188.png)
+![image-20220130202514188](./typora-user-images/image-20220130202514188.png)
 
 > 커널이란? - OS kernel
 >
@@ -44,9 +44,9 @@
 
 
 
-![image-20220130210717411](../../../AppData/Roaming/Typora/typora-user-images/image-20220130210717411.png)
+![image-20220130210717411](./typora-user-images/image-20220130210717411.png)
 
 
 
-![image-20220130210945376](../../../AppData/Roaming/Typora/typora-user-images/image-20220130210945376.png)
+![image-20220130210945376](./typora-user-images/image-20220130210945376.png)
 

@@ -16,15 +16,15 @@
 
     
 
-![image-20220131005029594](../../../AppData/Roaming/Typora/typora-user-images/image-20220131005029594.png)
+![image-20220131005029594](./typora-user-images/image-20220131005029594.png)
 
 - PC(Program Counter) + SP(Stack Pointer)
 
-![image-20220131235904842](../../../AppData/Roaming/Typora/typora-user-images/image-20220131235904842.png)
+![image-20220131235904842](./typora-user-images/image-20220131235904842.png)
 
 - EBP에 저장된 SP는 프로그램이 뻑이 났을 때 어떤 스택 프레임에서 문제가 생겼는지 디버깅을 하기 쉽게 도와준다.
 
-![image-20220201125213609](../../../AppData/Roaming/Typora/typora-user-images/image-20220201125213609.png)
+![image-20220201125213609](./typora-user-images/image-20220201125213609.png)
 
 - BSS: 초기화 되지 않은 전역변수
 - DATA: 초기값이 있는 전역변수

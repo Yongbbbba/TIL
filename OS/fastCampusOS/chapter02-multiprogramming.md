@@ -10,11 +10,11 @@
   - 응용 프로그램이 실행되다가 프린팅을 한다
   - 이러한 경우를 작업이 block되었다고 하는데, 이 block 상태에서는 CPU가 놀기 때문에 다른 작업에 CPU를 할당하면 CPU를 효율적으로 사용할 수 있다
 
-![image-20220130220722339](../../../AppData/Roaming/Typora/typora-user-images/image-20220130220722339.png)
+![image-20220130220722339](./typora-user-images/image-20220130220722339.png)
 
-![image-20220130221432027](../../../AppData/Roaming/Typora/typora-user-images/image-20220130221432027.png)
+![image-20220130221432027](./typora-user-images/image-20220130221432027.png)
 
-![image-20220130221951467](../../../AppData/Roaming/Typora/typora-user-images/image-20220130221951467.png)
+![image-20220130221951467](./typora-user-images/image-20220130221951467.png)
 
 ## 정리
 

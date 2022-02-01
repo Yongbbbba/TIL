@@ -49,7 +49,7 @@
 
 - 멀티 태스킹과 멀티 프로세싱 
 
-![image-20220130213653839](../../../AppData/Roaming/Typora/typora-user-images/image-20220130213653839.png)
+![image-20220130213653839](./typora-user-images/image-20220130213653839.png)
 
 - 멀티 태스킹: 단일 CPU
 - 멀티 프로세싱: 여러 CPU에 하나의 프로그램을 병렬로 실행해서 실행 속도를 극대화시키는 시스템

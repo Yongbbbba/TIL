@@ -53,7 +53,7 @@
 
   > 멀티 프로그래밍: 최대한 CPU를 많이 활용하도록 하는 시스템(시간 대비) -> CPU 활용도를 높이자
 
-![image-20220125000028907](../../../AppData/Roaming/Typora/typora-user-images/image-20220125000028907.png)
+![image-20220125000028907](./typora-user-images/image-20220125000028907.png)
 
 
 
