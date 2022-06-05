@@ -53,3 +53,41 @@ public:
 
 
 
+
+
+## 1년 뒤 코드 : 2022-06-05
+
+- 경악스러운 코드
+
+```c++
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        // 답이 안나오는 경우
+        int sum = accumulate(nums.begin(), nums.end(), 0);
+       if (target > sum)
+           return 0;
+        int result = nums.size();
+        for (int i =0; i<nums.size(); i++)
+        {
+            int sum = 0;
+            for (int j=i; j<nums.size(); j++)
+            {
+                sum += nums[j];
+                if (sum < target)
+                    continue;
+                else
+                {
+                    if ((j - i + 1) < result)
+                    {
+                        result = j - i + 1;
+                    }
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+};
+```
+
