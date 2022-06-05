@@ -91,3 +91,47 @@ public:
 };
 ```
 
+
+
+## 다시 풀어봄: 2022-06-05
+
+```c++
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        if (nums.size() == 0)
+            return 0;
+        int left = 0;
+        int right = 0;
+        int sum = nums[0];
+        bool found = false;
+        int result = nums.size();
+        while (right < nums.size() && left <= right)
+        {
+            // sum이 target보다 작으면 서브 배열의 길이를 늘려본다
+            if (sum < target)
+            {
+                right++;
+                if (right < nums.size())
+                    sum += nums[right];
+            }
+            else
+            {
+                // 찾기는 찾음
+                if ((right - left + 1) <= result)
+                {
+                    result = right - left + 1;
+                    found = true;
+                }
+                // 서브 배열의 길이 한 번 줄여보기
+                sum -= nums[left++];
+            }
+        }
+        if (found)
+            return result;
+        else
+            return 0;
+    }
+};
+```
+
