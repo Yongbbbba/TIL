@@ -31,3 +31,27 @@ public:
 };
 ```
 
+
+
+## 1년 뒤 코드 : 2022-06-05
+
+```c++
+class Solution {
+public:
+    int pivotIndex(vector<int>& nums) {
+        int pivot = 0;
+		int left = 0;
+		int right = accumulate(nums.begin(), nums.end(), 0) - nums[pivot];
+		for (int i = 0; i < nums.size(); i++)
+		{
+			if (left == right)
+				return pivot;
+			left += nums[pivot++];
+			if (pivot == nums.size()) return -1;
+			right -= nums[pivot];
+		}
+        return -1;
+    }
+};
+```
+
