@@ -25,3 +25,36 @@ public:
 };
 ```
 
+
+
+## 2022/06/05 1년 뒤에 다시 푼 결과
+
+- 기본적인 이진탐색 문제도 헤매는 중
+
+```c++
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int start = 0;  
+		int end = nums.size() - 1;
+		int mid = (end + start) / 2;
+		while (start <= end)
+		{
+			if (nums[mid] == target)
+				return mid;
+			if (nums[mid] > target)
+			{
+				end = mid - 1;
+			}
+			else
+			{
+				start = mid + 1;
+			}	
+			mid = (end + start) / 2;
+		}
+		return -1;
+
+    }
+};
+```
+
