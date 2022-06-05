@@ -24,3 +24,29 @@ public:
 };
 ```
 
+
+
+## 2022/06/05 1년 뒤의 풀이
+
+- 더 코드가 후져짐. 충격적이다. 
+
+```c++
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        for (int i = 0; i < nums.size(); i++)
+		{
+			for (int j = i + 1; j < nums.size(); j++)
+			{
+				if (nums[i] == 0 && nums[j] != 0)
+				{
+					swap(nums[i], nums[j]);
+				}
+			}
+		}
+		return;
+
+    }
+};
+```
+
