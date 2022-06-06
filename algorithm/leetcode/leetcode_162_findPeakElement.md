@@ -30,3 +30,32 @@ class Solution:
 
 
 
+## 1년 뒤 풀이 : 2022-06-06
+
+- 내 힘으로 풀지 못하고 영상 설명 봤음
+
+```c++
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) {
+        int left = 0;
+        int right = nums.size() - 1;
+        while (left < right)
+        {
+            int pivot = (left + right) / 2;
+            if (nums[pivot] < nums[pivot+1])
+            {
+                left = pivot + 1;
+            }
+            else
+            {
+                right = pivot;
+            }
+        }
+        return left;
+    }
+};
+```
+
+
+
