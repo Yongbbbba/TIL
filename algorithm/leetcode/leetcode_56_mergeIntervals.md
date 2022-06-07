@@ -35,3 +35,55 @@ class Solution:
         
 ```
 
+
+
+## 1년 뒤 코드: 2022-06-06
+
+- 이직은 꿈도 못꾸는 상태 
+
+```c++
+class Solution {
+public:
+
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        sort(intervals.begin(), intervals.end(), [&](vector<int> a, vector<int> b){
+            return a[0] < b[0];
+        });
+        
+        vector<vector<int>> result;
+        result.reserve(intervals.size());
+        int idx = 0;
+        int first = intervals[idx][0];
+        int second = intervals[idx][1];
+        bool merging = false;
+        idx++;
+        while (idx != intervals.size())
+        {
+            if (second < intervals[idx][0])
+            {
+                result.push_back({first, second});
+                
+                first = intervals[idx][0];
+                second = intervals[idx][1];
+                idx++;
+                merging = false;
+            }
+            else
+            {
+                if (second < intervals[idx][1])
+                    second = intervals[idx][1];
+                idx++;
+                merging = true;
+            }
+        }
+        if (!merging)
+            result.push_back(intervals[idx-1]);
+        else
+            result.push_back({first, second});
+        
+        return result;
+        
+    }
+};
+```
+
