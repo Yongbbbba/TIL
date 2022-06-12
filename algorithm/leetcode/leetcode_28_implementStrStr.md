@@ -35,3 +35,46 @@ class Solution(object):
         return -1
 ```
 
+
+
+## 1년뒤 풀이 : 2022-06-12
+
+### O(n*m) 풀이
+
+- kmp 알고리즘 공부했는데 이해 안돼서 이번에 패스.. 
+
+```c++
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        // O(n*m)으로 풀이 
+        int needleLen = needle.length();
+        int haystackLen = haystack.length();
+        int result = -1;
+        for (int i = 0; i < haystackLen; i++)
+        {
+            for (int j = 0; j < needleLen; j++)
+            {
+                if (needle[j] == haystack[i + j])
+                {
+                    if (j == needleLen - 1)
+                    {
+                        result = i;
+                        return result;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+               }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+};
+```
+
