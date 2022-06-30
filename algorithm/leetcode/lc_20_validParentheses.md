@@ -35,3 +35,45 @@ class Solution:
         return True
 ```
 
+
+
+## 1년 뒤 풀이 : 2022-06-03
+
+- 이런 쉬운 문제도 이렇게 오답을 많이 제출하는구나.. 
+
+```c++
+class Solution {
+public:
+    bool isValid(string s) {
+        vector<char> arr{ '(','[', '{', ')', ']', '}' };
+        stack<char> st;
+
+        for (auto& c : s)
+        {
+            if (c == arr[0] || c == arr[1] | c == arr[2])
+            {
+                st.emplace(c);
+            }
+            else
+            {
+                 if (st.empty())
+                    return false;
+                char top = st.top();
+                st.pop();
+                if (top == arr[0] && c != arr[3])
+                    return false;
+                if (top == arr[1] && c != arr[4])
+                    return false;
+                if (top == arr[2] && c != arr[5])
+                    return false;
+            }
+        }
+        
+        if (!st.empty())
+            return false;
+
+        return true;
+    }
+};
+```
+
