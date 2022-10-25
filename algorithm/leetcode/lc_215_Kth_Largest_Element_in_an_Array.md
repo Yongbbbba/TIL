@@ -41,3 +41,52 @@ class Solution:
 
 
 
+## 두 번째 코드
+
+- 파이썬에서 재귀돌 때 `self.메소드` 했어야 했는데 self를 빼먹어서 자꾸 NameError가 발생.. 자바나 C++처럼 this를 자꾸 넣어서 안돌아감
+- 이번 코드는 약간 이분탐색을 응용해서 풀이한 것인데 속도가 드라마틱하게 빨라지진 않았다. 
+
+```python 
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        if len(nums) == 1:
+            return nums[0]
+        pivotIdx = len(nums) - 1
+        pivot = nums[pivotIdx]
+        leftIdx = 0
+        rightIdx = pivotIdx - 1
+        while leftIdx <= rightIdx:
+            if nums[leftIdx] <= pivot:
+                leftIdx += 1
+                continue
+            if nums[rightIdx] > pivot:
+                rightIdx -= 1
+                continue
+            if nums[leftIdx] > pivot >= nums[rightIdx]:
+                nums[leftIdx], nums[rightIdx] = nums[rightIdx], nums[leftIdx]
+                continue
+        nums[leftIdx], nums[pivotIdx] = nums[pivotIdx], nums[leftIdx]
+        
+        if len(nums) - k == leftIdx:
+            return pivot
+        if len(nums) - k < leftIdx:
+            return self.findKthLargest(nums[:leftIdx], k - (len(nums) - leftIdx))
+        else:
+            return self.findKthLargest(nums[leftIdx+1:], k)
+        
+```
+
+
+
+## 세 번째 코드
+
+- 허무하게도 이게 제일 빠름. 내가 작성한 퀵소트는 pivot설정 문제 때문에 최선의 시간복잡도를 나타내지 못하기 때문이 아닐까싶다.
+
+```python 
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        return nums[len(nums) - k]
+        
+```
+
