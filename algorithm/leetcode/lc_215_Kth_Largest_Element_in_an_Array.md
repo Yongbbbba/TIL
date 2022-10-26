@@ -1,7 +1,6 @@
 # lc 215 Kth Largest Element in an Array
 
-- 퀵정렬 이용해서 짰는데 이 코드는 다 정렬하고 k번째로 큰 수를 뽑아내는거라서 최악의 경우 O(NlogN)일 수 있음. 실행속도가 실제로 빠르지 않았다
-- 리트코드에서 기본으로 제공하는 메소드의 인터페이스 때문에 다 정렬하고 나서 뽑았는데 다르게 풀 수도 있을 것 같다
+- 퀵정렬 이용해서 짰는데 이 코드는 다 정렬하고 k번째로 큰 수를 뽑아내는거라서 최악의 경우 O(NlogN)일 수 있음. 실행속도가 실제로 빠르지 않았다 -> 이것보다도 이분탐색을 응용하지 못하고, pivot을 고정된 인덱스로 선정하면서 성능이 떨어졌었다.
 
 
 
@@ -88,5 +87,43 @@ class Solution:
         nums.sort()
         return nums[len(nums) - k]
         
+```
+
+
+
+## 네 번째 코드
+
+- 불굴의 의지로 pivot을 랜덤하게 정해서 정렬 + 이분탐색으로 세 번째 코드 방식과 속도 비슷하게 만들었다
+
+```python
+`from random import randrange
+
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        if len(nums) == 1:
+            return nums[0]
+        pivotIdx = randrange(len(nums))
+        pivot = nums[pivotIdx]
+        nums[pivotIdx], nums[len(nums)-1] = nums[len(nums)-1], nums[pivotIdx]
+        leftIdx = 0
+        rightIdx = len(nums) - 2
+        while leftIdx <= rightIdx:
+            if nums[leftIdx] <= pivot:
+                leftIdx += 1
+                continue
+            if nums[rightIdx] > pivot:
+                rightIdx -= 1
+                continue
+            if nums[leftIdx] > pivot >= nums[rightIdx]:
+                nums[leftIdx], nums[rightIdx] = nums[rightIdx], nums[leftIdx]
+                continue
+        nums[leftIdx], nums[len(nums) - 1] = nums[len(nums) - 1], nums[leftIdx]
+        
+        if len(nums) - k == leftIdx:
+            return pivot
+        if len(nums) - k < leftIdx:
+            return self.findKthLargest(nums[:leftIdx], k - (len(nums) - leftIdx))
+        else:
+            return self.findKthLargest(nums[leftIdx+1:], k)
 ```
 
